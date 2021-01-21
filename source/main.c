@@ -24,13 +24,14 @@ void Tick(){
 			}
 			else if(button == 0x01){
 				state= LED1;
+				button = 0x00;
 			}
 			break;
 		case LED1:
-			if(button == 0x01){
+			if(button == 0x00){
 				state = LED1;
 			}
-			else if(button==0x00){
+			else if(button==0x01){
 				state = LED0;
 			}
 			break;
@@ -56,7 +57,7 @@ int main(void) {
 	state = start;
     /* Insert your solution below */
     while (1) {
-	button = (PINA & 0x00) | 0x01; // read input
+	button = PINA;
 	Tick();
     }
     return 1;
