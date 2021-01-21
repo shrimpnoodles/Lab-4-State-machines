@@ -22,6 +22,15 @@ tests = [ {'description': 'Testing when button is not pushed.',
     'steps': [ {'inputs': [('PINA', 0x01)],'iterations': 1}],
     'expected': [('PORTB',0x02)],
     },
+    {'description': 'testing button pushed (3)',
+	'steps': [ {'inputs': [('PINA', 0x00)], 'iterations' : 1}],
+	'expected': [('PORTB', 0x02)],
+},
+	    {'description': 'testing button pushed (4)',
+	'steps': [ {'inputs': [('PINA', 0x01)], 'iterations' : 1}],
+	'expected': [('PORTB', 0x01)],
+},
+	
     ]
 
 # Optionally you can add a set of "watch" variables these need to be global or static and may need
