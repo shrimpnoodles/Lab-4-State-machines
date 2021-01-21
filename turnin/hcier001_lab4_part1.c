@@ -11,27 +11,25 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-enum States {start, LED0, LED1} state;
-unsigned char button;
+enum States {start, LED0, BPUSH, BNOTP} state;
+unsigned button;
 void Tick(){
 	switch(state) { //transitions
 		case start:
 			state = LED0;
 			break;
 		case LED0:
-			if(button == 0x00){
-				state = LED0;
-			}
-			else if(button == 0x01){
-				state= LED1;
-				button = 0x00;
+			if(button == 0x01){
+				state = BPUSH;
 			}
 			break;
-		case LED1:
-			if(button == 0x00){
-				state = LED1;
+		case BPUSH:
+			if(button == 0X00){
+				state = BNOTP;
 			}
-			else if(button==0x01){
+			break;
+		case BNOTP:
+			if(button == 0x01){
 				state = LED0;
 			}
 			break;
@@ -43,7 +41,10 @@ void Tick(){
 		case LED0:
 			PORTB= 0X01;
 			break;
-		case LED1:
+		case BPUSH:
+			PORTB = 0x02;
+			break;
+		case BNOTP:
 			PORTB = 0x02;
 			break;
 		default:
@@ -60,5 +61,6 @@ int main(void) {
 	button = PINA;
 	Tick();
     }
+
     return 1;
 }
