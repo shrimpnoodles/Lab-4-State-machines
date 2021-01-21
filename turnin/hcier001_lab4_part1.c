@@ -14,7 +14,7 @@
 enum States {start, LED0, LED1} state;
 unsigned char button;
 void Tick(){
-	swtich(state) { //transitions
+	switch(state) { //transitions
 		case start:
 			state = LED0;
 			break;
@@ -56,7 +56,7 @@ int main(void) {
 	state = start;
     /* Insert your solution below */
     while (1) {
-	button = PINA & 0x00 | 0x01; // read input
+	button = (PINA & 0x00) | 0x01; // read input
 	Tick();
     }
     return 1;
