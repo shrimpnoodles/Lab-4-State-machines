@@ -11,9 +11,8 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-<<<<<<< HEAD
 
-enum State{start, led0, led1, buttonWait} state;
+enum State{start, led0, led1, buttonWait, buttonWait2} state;
 void Tick(){
 	switch (state) { // transitions
 		case start:
@@ -28,43 +27,34 @@ void Tick(){
 			}
 			break;
 		case led1:
-			state = buttonWait;
+			if(PINA ==0x00){
+				state = buttonWait;
+			}
+			else{
+				state= led1;
+			}
 			break;
 		case buttonWait:
 			if(PINA == 0x01){
-				state = led0;
+				state = buttonWait2;
 			}
 			else{
 				state = buttonWait;
-=======
-enum States {start, LED0, BPUSH, BNOTP} state;
-unsigned button;
-void Tick(){
-	switch(state) { //transitions
-		case start:
-			state = LED0;
-			break;
-		case LED0:
-			if(button == 0x01){
-				state = BPUSH;
 			}
 			break;
-		case BPUSH:
-			if(button == 0X00){
-				state = BNOTP;
+		case buttonWait2:
+			if(PINA == 0X00){
+				state = led0;
 			}
-			break;
-		case BNOTP:
-			if(button == 0x01){
-				state = LED0;
->>>>>>> 90c746160a6dd657438e35456c316a60576ec826
+			else{
+				state = buttonWait2;
 			}
 			break;
 		default:
 			state = start;
 			break;
-		}
-<<<<<<< HEAD
+	}
+
 	switch (state) { //actions
 		case led0:
 			PORTB = 0x01;
@@ -73,17 +63,10 @@ void Tick(){
 			PORTB = 0x02;
 			break;
 		case buttonWait:
-=======
-	switch(state){ //actions
-		case LED0:
-			PORTB= 0X01;
-			break;
-		case BPUSH:
 			PORTB = 0x02;
 			break;
-		case BNOTP:
->>>>>>> 90c746160a6dd657438e35456c316a60576ec826
-			PORTB = 0x02;
+		case buttonWait2:
+			PORTB = 0x01;
 			break;
 		default:
 			break;
@@ -96,14 +79,7 @@ int main(void) {
 	state = start;
     /* Insert your solution below */
     while (1) {
-<<<<<<< HEAD
 	Tick();
     }
-=======
-	button = PINA;
-	Tick();
-    }
-
->>>>>>> 90c746160a6dd657438e35456c316a60576ec826
     return 1;
 }

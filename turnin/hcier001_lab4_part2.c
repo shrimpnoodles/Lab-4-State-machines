@@ -11,7 +11,7 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-enum States {start, init, p0push, p1push, reset} state;
+enum States {start, init, p0push, p1push, wait1, wait2, reset} state;
 unsigned portcCount;
 void Tick(){
 	switch(state) { //transitions
@@ -19,10 +19,7 @@ void Tick(){
 			state = init;
 			break;
 		case init:
-			if(PINA == 0X00){
-				state =init;
-			}
-			else if(PINA == 0x01){
+			if(PINA == 0x01){
 				state = p0push;
 			}
 			else if(PINA== 0x02){
@@ -33,19 +30,34 @@ void Tick(){
 			}
 			break;
 		case p0push:
-		//	if(PINA !=0x01){
-				state = init;
-		//	}
+			if(PINA != 0x01){
+			state = init;
+			}
+			else{
+				state = wait1;
+			}
+			break;
+		case wait1:
+			state = init;
 			break;
 		case p1push:
-		//	if(PINA !=0x02){
-				state = init;
-		//	}
+			if(PINA!=0x02){
+			state = init;
+			}
+			else{
+				state = wait2;
+			}
+			break;
+		case wait2:
+			state = init;
 			break;
 		case reset:
-		//	if(PINA != 0x03){
+			if(PINA == 0x03){
+				state = reset;
+			}
+			else{
 				state = init;
-		//	}
+			}
 			break;
 		default:
 			state = start;
@@ -56,13 +68,17 @@ void Tick(){
 			break;
 		case p0push:
 			if(portcCount < 9){
-				portcCount++;
+				portcCount = portcCount +1;
 			}
 			break;
 		case p1push: 
 			if(portcCount > 0){
-				portcCount--;
+				portcCount = portcCount -1;
 			}
+			break;
+		case wait1:
+			break;
+		case wait2:
 			break;
 		case reset:
 			portcCount =0;
