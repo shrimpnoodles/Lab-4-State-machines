@@ -27,8 +27,11 @@ void Tick(){
 			}
 			break;
 		case led1:
-			if(PINA ==0x01){
+			if(PINA ==0x00){
 				state = buttonWait;
+			}
+			else{
+				state= led1;
 			}
 			break;
 		case buttonWait:
