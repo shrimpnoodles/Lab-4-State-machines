@@ -33,13 +33,19 @@ void Tick(){
 			}
 			break;
 		case p0push:
+				if(PINA != 0x01){
 				state = init;
+				}
 			break;
 		case p1push:
+				if(PINA !=0x02){
 				state = init;
+				}
 			break;
 		case reset:
+				if(PINA!=0x03){
 				state = init;
+				}
 			break;
 		default:
 			state = start;
