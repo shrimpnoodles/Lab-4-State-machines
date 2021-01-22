@@ -21,49 +21,41 @@ void Tick(){
 		case init:
 			if(PINA == 0X01){
 				state = p0push;
-				break;
 			}
 			else if(PINA == 0x02){
 				state = p1push;
-				break;
 			}
 			else if(PINA == 0x03){
 				state = reset;
-				break;
 			}
 			else{
 				state = init;
-				break;
 			}
+			break;
 		case p0push:
 			if(PINA == 0x02){
 				state = reset;
-				break;
 			}
 			else{
 				state = init;
-				break;
 			}
-	
+			break;
 		case p1push:
 			if(PINA == 0x01){
 				state = reset;
-				break;
 			}
 			else {
 				state = init;
-				break;
 			}
-			
+			break;
 		case reset:
 			if(PINA == 0x03){
 			state = reset;
-			break;
 			}
 			else{
 				state = init;
-				break;
 			}
+			break;
 		default:
 			state = start;
 			break;
