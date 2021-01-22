@@ -64,6 +64,7 @@ void Tick(){
 		}
 	switch(state){ //actions
 		case init:
+			portcCount = 7;
 			break;
 		case p0push:
 			if(portcCount < 9){
