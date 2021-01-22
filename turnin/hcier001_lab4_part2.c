@@ -33,10 +33,20 @@ void Tick(){
 			}
 			break;
 		case p0push:
+			if(PINA != 0x01){
 			state = init;
+			}
+			else{
+				state = p0push;
+			}
 			break;
 		case p1push:
+			if(PINA!=0x02){
 			state = init;
+			}
+			else{
+				state = p1push;
+			}
 			break;
 		/*case wait1:
 			if(PINA ==0x00){
@@ -88,10 +98,9 @@ int main(void) {
 	DDRB = 0XFF; PORTB = 0X00;
 	DDRC = 0xFF; PORTC = 0X00;
 	state = start;
-	
+	portcCount = 7;
     /* Insert your solution below */
     while (1) {
-	    portcCount = 7;
 	Tick();
 	PORTC = portcCount;
     }
