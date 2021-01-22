@@ -50,6 +50,9 @@ void Tick(){
 			if((PINA&0x02)==0x02){
 				state =y;
 			}
+			else if((PINA & 0x04)==0x04){
+				state = pound;
+			}
 			else if((PINA&0X80)==0X80){
 				state = lock;
 			}
@@ -58,7 +61,12 @@ void Tick(){
 			}
 			break; 
 		case y:
-			state = unlock;
+			if((PINA&0x00)=0x00){
+				state = unlock;
+			}
+			else{
+				state = y;
+			}
 			break;
 		case unlock:
 			if((PINA&0x80)==0x80){
@@ -88,10 +96,10 @@ void Tick(){
 				PORTB =0;
 				PORTC = pound;
 				break;
-			/*case wait:
+			case wait:
 				PORTB =0;
 				PORTC = wait;
-				break; */
+				break; 
 			case y:
 				PORTB = 0;
 				PORTC = y;
