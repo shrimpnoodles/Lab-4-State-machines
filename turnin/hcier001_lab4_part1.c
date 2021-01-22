@@ -35,12 +35,12 @@ void Tick(){
 			}
 			break;
 		case buttonWait:
-			//if(PINA == 0x01){
+			if(PINA == 0x01){
 				state = led0;
-			//}
-			//else{
-			//	state = buttonWait;
-			//}
+			}
+			else{
+				state = buttonWait;
+			}
 			break;
 		default:
 			state = start;
