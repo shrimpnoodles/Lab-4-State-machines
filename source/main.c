@@ -21,29 +21,49 @@ void Tick(){
 		case init:
 			if(PINA == 0X01){
 				state = p0push;
+				break;
 			}
 			else if(PINA == 0x02){
 				state = p1push;
+				break;
 			}
-			break;
-		case p0push:
-			if(PINA == 0x02){
+			else if(PINA == 0x03){
 				state = reset;
+				break;
 			}
 			else{
 				state = init;
+				break;
 			}
-			break;
+		case p0push:
+			if(PINA == 0x02){
+				state = reset;
+				break;
+			}
+			else{
+				state = init;
+				break;
+			}
+	
 		case p1push:
 			if(PINA == 0x01){
 				state = reset;
+				break;
 			}
 			else {
 				state = init;
+				break;
 			}
-			break;
+			
 		case reset:
+			if(PINA == 0x03){
+			state = reset;
 			break;
+			}
+			else{
+				state = init;
+				break;
+			}
 		default:
 			state = start;
 			break;
@@ -72,6 +92,7 @@ int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0X00; PORTA = 0XFF;
 	DDRB = 0XFF; PORTB = 0X00;
+	DDRC = 0xFF; PORTC = 0X00;
 	state = start;
 	portcCount = 7;
     /* Insert your solution below */
