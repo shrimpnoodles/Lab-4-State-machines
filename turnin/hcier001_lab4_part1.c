@@ -12,7 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-enum State{start, led0, led1, buttonWait} state;
+enum State{start, led0, led1, buttonWait, buttonWait2} state;
 void Tick(){
 	switch (state) { // transitions
 		case start:
@@ -36,10 +36,18 @@ void Tick(){
 			break;
 		case buttonWait:
 			if(PINA == 0x01){
-				state = led0;
+				state = buttonWait2;
 			}
 			else{
 				state = buttonWait;
+			}
+			break;
+		case buttonWait2:
+			if(PINA == 0X00){
+				state = led0;
+			}
+			else{
+				state = buttonWait2;
 			}
 			break;
 		default:
@@ -56,6 +64,9 @@ void Tick(){
 			break;
 		case buttonWait:
 			PORTB = 0x02;
+			break;
+		case buttonWait2:
+			PORTB = 0x01;
 			break;
 		default:
 			break;
