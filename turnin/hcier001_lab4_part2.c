@@ -19,8 +19,13 @@ void Tick(){
 			state = init;
 			break;
 		case init:
+<<<<<<< HEAD
 			if(PINA == 0X00){
 				state =init;
+=======
+			if(PINA == 0x00){
+				state = init;
+>>>>>>> 40e33eec432d2170fdcfc1cb7973a19c6036bda2
 			}
 			else if(PINA == 0x01){
 				state = p0push;
@@ -33,7 +38,11 @@ void Tick(){
 			}
 			break;
 		case p0push:
+<<<<<<< HEAD
 			if(PINA !=0x01){
+=======
+			if(PINA != 0x01){
+>>>>>>> 40e33eec432d2170fdcfc1cb7973a19c6036bda2
 				state = init;
 			}
 			break;
@@ -52,20 +61,18 @@ void Tick(){
 			break;
 		}
 	switch(state){ //actions
-		case init:
-			break;
 		case p0push:
-			if(portcCount < 9){
+			if(PORTC < 9){
 				portcCount++;
 			}
 			break;
-		case p1push: 
-			if(portcCount > 0){
+		case p1push:
+			if(PORTC > 0){
 				portcCount--;
 			}
 			break;
 		case reset:
-			portcCount =0;
+			portcCount = 0;
 			break;
 		default:
 			break;
