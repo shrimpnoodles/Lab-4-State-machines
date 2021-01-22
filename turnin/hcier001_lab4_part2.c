@@ -64,7 +64,6 @@ void Tick(){
 		}
 	switch(state){ //actions
 		case init:
-			portcCount = 7;
 			break;
 		case p0push:
 			if(portcCount < 9){
@@ -89,9 +88,10 @@ int main(void) {
 	DDRB = 0XFF; PORTB = 0X00;
 	DDRC = 0xFF; PORTC = 0X00;
 	state = start;
-	portcCount = 7;
+	
     /* Insert your solution below */
     while (1) {
+	    portcCount = 7;
 	Tick();
 	PORTC = portcCount;
     }
