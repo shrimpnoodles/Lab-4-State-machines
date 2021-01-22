@@ -61,7 +61,7 @@ void Tick(){
 			}
 			break; 
 		case y:
-			if((PINA&0x00)=0x00){
+			if((PINA&0x00)==0x00){
 				state = unlock;
 			}
 			else{
