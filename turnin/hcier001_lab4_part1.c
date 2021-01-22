@@ -40,6 +40,7 @@ void Tick(){
 		default:
 			state = start;
 			break;
+	}
 
 	switch (state) { //actions
 		case led0:
