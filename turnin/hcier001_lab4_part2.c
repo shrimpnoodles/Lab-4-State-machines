@@ -30,10 +30,16 @@ void Tick(){
 			if(PINA == 0x02){
 				state = reset;
 			}
+			else{
+				state = init;
+			}
 			break;
 		case p1push:
 			if(PINA == 0x01){
 				state = reset;
+			}
+			else {
+				state = init;
 			}
 			break;
 		case reset:
@@ -44,7 +50,6 @@ void Tick(){
 		}
 	switch(state){ //actions
 		case init:
-			portcCount =7;
 			break;
 		case p0push:
 			if(portcCount < 9){
