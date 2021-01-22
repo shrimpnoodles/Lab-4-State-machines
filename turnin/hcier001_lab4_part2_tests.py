@@ -14,29 +14,6 @@
 # An example set of tests is shown below. It is important to note that these tests are not "unit tests" in 
 # that they are not ran in isolation but in the order shown and the state of the device is not reset or 
 # altered in between executions (unless preconditions are used).
-<<<<<<< HEAD
-tests = [ {'description': 'This test will run first.',
-    'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 1 } ],
-    'expected': [('PORTB',0x01)],
-    },
-    {'description': 'This test will run second.',
-    'steps': [ {'inputs': [('PINA',0X01 )],'iterations': 1}],
-    'expected': [('PORTB',0X02)],
-	},
-    {'description': 'This test will run 3.',
-    'steps': [ {'inputs': [('PINA',0X01 )],'iterations': 1}],
-    'expected': [('PORTB',0X02)],
-    },
-    {'description': 'This test will run 4.',
-    'steps': [ {'inputs': [('PINA',0X00 )],'iterations': 1}],
-    'expected': [('PORTB',0X02)],
-    },
-    {'description': 'This test will run 5.',
-    'steps': [ {'inputs': [('PINA',0X01 )],'iterations': 1}],
-    'expected': [('PORTB',0X01)],
-    },
-		
-=======
 tests = [ {'description':'1',
     'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 1 } ],
     'expected': [('PORTC', 7)],
@@ -58,7 +35,6 @@ tests = [ {'description':'1',
 	'expected': [('PORTC', 7)],
 },
 	
->>>>>>> 90c746160a6dd657438e35456c316a60576ec826
     ]
 
 # Optionally you can add a set of "watch" variables these need to be global or static and may need

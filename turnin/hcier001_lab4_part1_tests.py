@@ -14,6 +14,7 @@
 # An example set of tests is shown below. It is important to note that these tests are not "unit tests" in 
 # that they are not ran in isolation but in the order shown and the state of the device is not reset or 
 # altered in between executions (unless preconditions are used).
+<<<<<<< HEAD
 tests = [ {'description': 'This test will run first.',
     'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 1 } ],
     'expected': [('PORTB',0x01)],
@@ -35,6 +36,29 @@ tests = [ {'description': 'This test will run first.',
     'expected': [('PORTB',0X01)],
     },
 		
+=======
+tests = [ {'description': 'Testing when button is not pushed.',
+    'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 1 } ],
+    'expected': [('PORTB',0x01)],
+    },
+    {'description': 'Testing when button is pushed.',
+    'steps': [ {'inputs': [('PINA', 0x01)],'iterations': 1}],
+    'expected': [('PORTB',0x02)],
+    },
+    {'description': 'testing button pushed (3)',
+	'steps': [ {'inputs': [('PINA', 0x01)], 'iterations' : 1}],
+	'expected': [('PORTB', 0x02)],
+},
+	    {'description': 'testing button pushed (4)',
+	'steps': [ {'inputs': [('PINA', 0x00)], 'iterations' : 1}],
+	'expected': [('PORTB', 0x02)],
+},
+		    {'description': 'testing button pushed (5)',
+	'steps': [ {'inputs': [('PINA', 0x01)], 'iterations' : 1}],
+	'expected': [('PORTB', 0x01)],
+},
+	
+>>>>>>> 90c746160a6dd657438e35456c316a60576ec826
     ]
 
 # Optionally you can add a set of "watch" variables these need to be global or static and may need
