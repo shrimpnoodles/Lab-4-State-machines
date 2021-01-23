@@ -66,6 +66,7 @@ void Tick(){
 			}
 			else if((PINA&0x80)==0x80){
 				state=lock;
+			}
 			else{
 				state = init;
 			}
