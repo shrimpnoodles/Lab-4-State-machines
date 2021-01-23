@@ -39,20 +39,20 @@ void Tick(){
 			else{
 				state = pound;
 			}*/
-			if((PINA&0x04)==0x04){
-				state = pound;
-			}
-			else{
+			//if((PINA&0x04)==0x04){
+			//	state = pound;
+			//}
+			//else{
 				state = wait;
-			}
+			//}
 			break;
 		case wait:
-			if((PINA&0x02)==0x02){
+			if((PINA&0x07)==0x02){
 				state =y;
 			}
-			else if((PINA & 0x00)==0x00){
-				state = init;
-			}
+			//else if((PINA & 0x00)==0x00){
+			//	state = init;
+			//}
 			else if((PINA&0X80)==0X80){
 				state = lock;
 			}
@@ -61,10 +61,10 @@ void Tick(){
 			}
 			break; 
 		case y:
-			if((PINA&0x02)==0x02){
-				state = unlock;
-			}
-			else if((PINA&0x80)==0x80){
+			//if((PINA&0x02)==0x02){
+			//	state = unlock;
+			//}
+			 if((PINA&0x80)==0x80){
 				state=lock;
 			}
 			else{
