@@ -82,7 +82,7 @@ void Tick(){
 			else{
 				state = unlock;
 			}
-			break; */
+			break;
 		case lock:
 			if((PINA&0x80)==0x80){
 				state = lock;
