@@ -61,8 +61,11 @@ void Tick(){
 			if(PINA == 0x03){
 				state = reset;
 			}
-			else{
-				state = init;
+			else if(PINA==0x01){
+				state = p0push;
+			}
+			else if(PINA==0x02){
+				state = p1push;
 			}
 			break;
 		default:
