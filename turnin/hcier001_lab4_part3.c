@@ -42,13 +42,9 @@ void Tick(){
 			//if((PINA&0x04)==0x04){
 			//	state = pound;
 			//}
-			//else{
-			if((PINA&0x07)==0x04){
-				state = pound;
-			}
-			else{
+			//else
 				state = wait;
-			}
+		
 			//}
 			break;
 		case wait:
