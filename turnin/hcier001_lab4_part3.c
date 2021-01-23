@@ -12,7 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-enum State{start, init, pound, y, wait, lock} state;
+enum State{start, init, pound, y, wait, unlock, lock} state;
 void Tick(){
 	switch (state) { //transitions
 		case start:
@@ -47,7 +47,7 @@ void Tick(){
 			}
 			break; 
 		case y:
-			if((PINA==0x00){
+			if(PINA==0x00){
 				state = unlock;
 			}
 			 if((PINA&0x80)==0x80){
@@ -72,6 +72,7 @@ void Tick(){
 			else{
 				state = init;
 			}
+			break;
 		default:
 			state = start;
 			break;
