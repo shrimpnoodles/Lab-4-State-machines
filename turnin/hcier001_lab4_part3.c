@@ -30,15 +30,23 @@ void Tick(){
 			}
 			break;
 		case pound:
-			state = wait;
+			if((PINA&0X07)==0X02){
+				state = wait;
+			}
+			else if(PINA ==0X80){
+				state = lock;
+			}
+			else{
+				state = pound;
+			}
 			break;
 		case wait:
 			if((PINA&0x07)==0x02){
 				state =y;
 			}
-			//else if((PINA & 0x00)==0x00){
-			//	state = init;
-			//}
+			else if(PINA ==0x00){
+				state = unlock;
+			}
 			else if((PINA&0X80)==0X80){
 				state = lock;
 			}
