@@ -12,7 +12,7 @@
 #include "simAVRHeader.h"
 #endif
 
-enum State{start, init, pound, y, wait, lock} state;
+enum State{start, init, pound, y, wait, unlock, lock} state;
 void Tick(){
 	switch (state) { //transitions
 		case start:
@@ -42,15 +42,9 @@ void Tick(){
 			//if((PINA&0x04)==0x04){
 			//	state = pound;
 			//}
-			//else{
-			if((PINA&0x07)==0x04){
-				state = pound;
-			}
-			else{
 			//else
 				state = wait;
-			}
-
+		
 			//}
 			break;
 		case wait:
@@ -126,7 +120,6 @@ void Tick(){
 				break;
 	}	
 }
-			
 int main(void) {
     /* Insert DDR and PORT initializations */
 	DDRA = 0X00; PORTA = 0XFF;
