@@ -11,7 +11,7 @@
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-enum State{start, init, pound, y, wait, relock1, relock2, unlock} state;
+enum State{start, init, pound, y, wait, relock1, relock2, lock} state;
 void Tick(){
 	switch (state) { //transitions
 		case start:
