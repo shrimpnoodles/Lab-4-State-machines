@@ -77,12 +77,12 @@ void Tick(){
 			portcCount = 7;
 			break;
 		case p0push:
-			if(portcCount < 9){
+			if(portcCount =< 9){
 				portcCount = portcCount +1;
 			}
 			break;
 		case p1push: 
-			if(portcCount > 0){
+			if(portcCount >= 0){
 				portcCount = portcCount -1;
 			}
 			break;
