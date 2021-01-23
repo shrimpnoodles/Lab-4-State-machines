@@ -19,7 +19,7 @@ void Tick(){
 			state = init;
 			break;
 		case init:
-			if((PINA&0x04)==0x04){
+			if((PINA&0x07)==0x04){
 				state = pound;
 			}
 			else if((PINA&0x80)==0x80){
@@ -43,7 +43,12 @@ void Tick(){
 			//	state = pound;
 			//}
 			//else{
+			if((PINA&0x07)==0x04){
+				state = pound;
+			}
+			else{
 				state = wait;
+			}
 			//}
 			break;
 		case wait:
