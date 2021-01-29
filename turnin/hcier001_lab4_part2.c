@@ -19,13 +19,13 @@ void Tick(){
 			state = init;
 			break;
 		case init:
-			if(PINA == 0x01){
+			if((~PINA&0x03) == 0x01){
 				state = p0push;
 			}
-			else if(PINA== 0x02){
+			else if((~PINA&0x03)== 0x02){
 				state = p1push;
 			}
-			else if(PINA== 0x03){
+			else if((~PINA&0x03)== 0x03){
 				state = reset;
 			}
 			break;
@@ -33,10 +33,10 @@ void Tick(){
 			state = wait1;
 			break;
 		case wait1:
-			if(PINA == 0x02){
+			if((~PINA&0x03) == 0x02){
 				state = p1push;
 			}
-			else if(PINA == 0x03){
+			else if((~PINA&0x03) == 0x03){
 				state = reset;
 			}
 			else{
@@ -47,10 +47,10 @@ void Tick(){
 			state = wait2;
 			break;
 		case wait2:
-			if(PINA==0x03){
+			if((~PINA&0x03)==0x03){
 				state = reset;
 			}
-			else if(PINA==0x01){
+			else if((~PINA&0x03)==0x01){
 				state = p0push;
 			}
 			else{
@@ -58,13 +58,13 @@ void Tick(){
 			}
 			break;
 		case reset:
-			if(PINA == 0x03){
+			if((~PINA&0x03) == 0x03){
 				state = reset;
 			}
-			else if(PINA==0x01){
+			else if((~PINA&0x03)==0x01){
 				state = p0push;
 			}
-			else if(PINA==0x02){
+			else if((~PINA&0x03)==0x02){
 				state = p1push;
 			}
 			break;
